@@ -4,7 +4,7 @@ import {fileURLToPath} from 'url';
 import dataRoutes from "./routers/routes.js";
 
 const _filename = fileURLToPath(import.meta.url);
-const _dirname = path.dirname(__filename);
+const _dirname = path.dirname(_filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
