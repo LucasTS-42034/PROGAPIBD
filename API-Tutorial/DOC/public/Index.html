@@ -4,48 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste API Firebase</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .container {
-            border: 1px solid #ccc;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        #result {
-            margin-top: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background-color: #f8f9fa;
-        }
-        .error {
-            color: #dc3545;
-            background-color: #f8d7da;
-            border-color: #f5c6cb;
-        }
-        .success {
-            color: #155724;
-            background-color: #d4edda;
-            border-color: #c3e6cb;
-        }
-    </style>
+    <link rel="stylesheet" href="Style.css">
 </head>
 <body>
     <div class="container">
@@ -56,62 +15,6 @@
         <div id="result"></div>
     </div>
 
-    <script>
-        async function testFirebase() {
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = 'Testando conexão...';
-            resultDiv.className = '';
-            
-            try {
-                const response = await fetch('/'); // Acessando a rota correta
-                
-                if (!response.ok) {
-                    throw new Error(`Erro HTTP: ${response.status}`);
-                }
-                
-                const data = await response.json();
-                
-                if (Array.isArray(data)) {
-                    if (data.length === 0) {
-                        resultDiv.innerHTML = `
-                            <strong>✅ Conexão bem-sucedida!</strong><br>
-                            Firebase conectado com sucesso, mas a coleção "dados" está vazia ou não existe.
-                            <br><br>
-                            <strong>Resposta:</strong> ${JSON.stringify(data)}
-                        `;
-                        resultDiv.className = 'success';
-                    } else {
-                        resultDiv.innerHTML = `
-                            <strong>✅ Conexão bem-sucedida!</strong><br>
-                            Dados encontrados na coleção "dados":
-                            <br><br>
-                            <strong>Resposta:</strong> ${JSON.stringify(data, null, 2)}
-                        `;
-                        resultDiv.className = 'success';
-                    }
-                } else {
-                    resultDiv.innerHTML = `
-                        <strong>⚠️ Resposta inesperada</strong><br>
-                        A API retornou: ${JSON.stringify(data)}
-                    `;
-                    resultDiv.className = '';
-                }
-                
-            } catch (error) {
-                resultDiv.innerHTML = `
-                    <strong>❌ Erro na conexão:</strong><br>
-                    ${error.message}
-                    <br><br>
-                    Verifique se:
-                    <ul>
-                        <li>O servidor está rodando</li>
-                        <li>As credenciais do Firebase estão corretas</li>
-                        <li>A coleção "dados" existe no Firestore</li>
-                    </ul>
-                `;
-                resultDiv.className = 'error';
-            }
-        }
-    </script>
+    <script> src = "Script.js" </script>
 </body>
 </html>
